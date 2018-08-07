@@ -9,7 +9,7 @@ use sergey144010\users\User\Phone;
 
 class User implements UserInterface
 {
-	private $id;
+    private $id;
     private $name;
     private $mail;
     private $phone;
@@ -41,10 +41,10 @@ class User implements UserInterface
         return $this->phone;
     }
 	
-	public function setId($id)
-	{
-		if(empty($this->id)){
-			$this->id = $id;
-		};
-	}
+    public function setId($id)
+    {
+        if(empty($this->id)){
+            $this->id = $id;
+        };
+    }
 }
