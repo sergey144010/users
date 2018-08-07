@@ -1,0 +1,25 @@
+<table class="table table-striped mainTable" id="filterTable">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for user in users %}
+    <tr>
+        <td><a href="/edit/{{ user.id }}">{{ user.name }}</a></td>
+        <td>
+            {{ user.mail }}
+        </td>
+        <td>
+            {{ user.phone }}
+        </td>
+        <td width="3%">
+            <button type="button" class="delete btn btn-outline-danger btn-sm" id="{{ user.id }}">delete</button>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>

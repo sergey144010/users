@@ -1,0 +1,51 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block title %}Home Page title{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Home Page description" />
+    <script src='/js/checkErrorJs.js'></script>
+{% endblock %}
+
+{% block content %}
+
+{% if users is empty %}
+        <div class="alert alert-danger" role="alert">
+            Tables is empty
+        </div>
+{% else %}
+    <table class="table table-striped mainTable" id="filterTable">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>
+                <a href="/edit/{{ user.id }}">{{ user.name }}</a>
+            </td>
+            <td>
+                    {{ user.mail }}
+            </td>
+            <td>
+                    {{ user.phone }}
+            </td>
+            <td width="3%">
+                <button type="button" class="delete btn btn-outline-danger btn-sm" id="{{ user.id }}">delete</button>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+
+{% endblock %}
+
+{% block script %}
+    <script src='/js/picnet.table.filter.min.js'></script>
+    <script src='/js/app.js'></script>
+{% endblock %}

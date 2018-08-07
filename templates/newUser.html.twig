@@ -1,0 +1,54 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="New User" />
+{% endblock %}
+
+{% block content %}
+
+{% if id %}
+    <form action="/update" method="post" name="Form">
+{% else %}
+	<form action="/save" method="post" name="Form">
+{% endif %}
+	
+	{% if id %}
+        <input type="hidden" name="id" class="form-control" id="id" aria-describedby="Id" value="{{ id }}">
+	{% endif %}
+	
+        <div class="form-group">
+            <label for="name">Name</label>
+            {% if name is empty %}
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="User name" placeholder="Enter name" value="">
+            {% else %}
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="User name" placeholder="Enter name" value="{{ name }}">
+            {% endif %}
+            <small id="nameHelpBlock" class="form-text text-danger"></small>
+        </div>
+        <div class="form-group">
+            <label for="mail">Mail</label>
+            {% if mail is empty %}
+                <input type="text" name="mail" class="form-control" id="mail" placeholder="Enter mail">
+            {% else %}
+                <input type="text" name="mail" class="form-control" id="mail" placeholder="Enter mail" value="{{ mail }}">
+            {% endif %}
+            <small id="mailHelpBlock" class="form-text text-danger"></small>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            {% if phone is empty %}
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone">
+            {% else %}
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone" value="{{ phone }}">
+            {% endif %}
+            <small id="phoneHelpBlock" class="form-text text-danger"></small>
+        </div>
+        <button type="submit" class="sub btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script src='/js/checkForm.js'></script>
+{% endblock %}
